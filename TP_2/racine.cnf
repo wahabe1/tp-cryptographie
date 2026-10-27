@@ -1,0 +1,28 @@
+[ ca ]
+default_ca = CA_racine
+
+[ CA_racine ]
+dir              = ./racine
+database         = $dir/index.txt
+new_certs_dir    = $dir/newcerts
+serial           = $dir/serial
+crlnumber        = $dir/crlnumber
+certificate      = $dir/racine.crt
+private_key      = $dir/racine.key
+default_md       = sha384
+default_days     = 1825
+default_crl_days = 30
+policy           = policy_tp
+unique_subject   = no
+
+[ policy_tp ]
+countryName      = optional
+organizationName = optional
+commonName       = supplied
+
+[ ext_inter ]
+basicConstraints       = critical, CA:TRUE, pathlen:0
+keyUsage               = critical, keyCertSign, cRLSign
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always
+nameConstraints        = critical, permitted;DNS:tp.local, permitted;email:tp.local
