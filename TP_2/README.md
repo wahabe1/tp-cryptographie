@@ -105,5 +105,8 @@ openssl crl -in inter/crl/inter.crl -noout -text
 
 ## Remarques
 
-- Les fichiers `racine.cnf` et `inter.cnf` ont été écrits à partir de l'énoncé du TP.
+- L'annexe B (fichiers de configuration fournis) n'était pas disponible dans mon exemplaire du TP.
+  Les fichiers `racine.cnf` et `inter.cnf` de ce dépôt ont donc été rédigés d'après les consignes
+  de l'énoncé (durées, `pathlen`, contraintes de nom, usages des certificats).
+  Ils peuvent différer de ceux de l'annexe, mais respectent les mêmes exigences..
 - Les clés privées et les demandes de certificat (`.key`, `.csr`) restent en local et ne sont pas versionnées.
