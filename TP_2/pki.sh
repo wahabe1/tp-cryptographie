@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # pki.sh - Construit la PKI du TP 2 :
 # AC racine, AC intermediaire, certificat serveur et certificat client.
-# Prerequis : racine.cnf et inter.cnf dans le dossier courant.
+# Prerequis : racine.cnf et inter.cnf (annexe B) dans le dossier courant.
 set -euo pipefail
 
 if [ ! -f racine.cnf ] || [ ! -f inter.cnf ]; then
@@ -14,9 +14,10 @@ if [ -d racine ] || [ -d inter ]; then
 fi
 
 echo "== Etape 1 : arborescence des autorites"
-mkdir -p racine/newcerts racine/crl inter/newcerts inter/crl
+mkdir -p racine/certs racine/crl racine/newcerts inter/certs inter/crl inter/newcerts
 touch racine/index.txt inter/index.txt
-echo 1000 | tee racine/serial inter/serial racine/crlnumber inter/crlnumber > /dev/null
+echo 1000 | tee racine/serial racine/crlnumber > /dev/null
+echo 2000 | tee inter/serial inter/crlnumber > /dev/null
 
 echo "== Etape 2 : AC racine (P-384, 10 ans)"
 openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-384 -out racine/racine.key
