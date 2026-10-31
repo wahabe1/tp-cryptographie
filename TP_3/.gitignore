@@ -1,0 +1,9 @@
+# Jamais de cles privees ni de mots de passe dans le depot
+*.key
+*.p12
+*.pfx
+*.srl
+# Fichiers temporaires
+__pycache__/
+.pytest_cache/
+*.swp
